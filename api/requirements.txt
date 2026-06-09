@@ -1,0 +1,2 @@
+# The extraction function uses only the Python standard library.
+# Add packages here (e.g. supabase, anthropic) as the engine grows.

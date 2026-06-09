@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-plex-sans: "IBM Plex Sans";
+  --font-plex-mono: "IBM Plex Mono";
+  --people: #d2e0fb;
+  --documents: #f9f3cc;
+  --system: #d7e5ca;
+  --header: #8eaccd;
+  --ink: #14213a;
+  --line: #d8dee9;
+}
+
+html {
+  color: var(--ink);
+  background: #fbfcfe;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-plex-sans), system-ui, sans-serif;
+}
+
+/* Visible, consistent keyboard focus on every interactive element. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip link for keyboard / screen-reader users. */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 16px;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
