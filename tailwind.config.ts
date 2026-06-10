@@ -23,6 +23,7 @@ const config: Config = {
         "ink-soft": "#3D4A63",
         canvas: "#FBFCFE",
         line: "#D8DEE9",
+        structural: "#8EACCD",
       },
       fontFamily: {
         sans: ["var(--font-plex-sans)", "system-ui", "sans-serif"],
