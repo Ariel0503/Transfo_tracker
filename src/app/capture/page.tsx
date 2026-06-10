@@ -1,14 +1,17 @@
-// app/capture/page.tsx
-// Server component — passes only serialisable props, so no 'use client' needed here.
-// With no onSelect prop, CaptureSources navigates to /capture/{id} on click.
-// Dates are ISO here and rendered as dd/mm/yyyy by the component.
+// app/capture/page.tsx  (or src/app/capture/page.tsx)
+'use client';
 
+import { useState } from 'react';
 import CaptureSources from '@/components/capture/CaptureSources';
+import type { CaptureSourceId } from '@/lib/triangulation';
 
 export default function CapturePage() {
+  const [selected, setSelected] = useState<CaptureSourceId | null>(null);
+
   return (
     <main className="mx-auto max-w-4xl px-6 py-8">
       <CaptureSources
+        onSelect={setSelected}
         lastUsedById={{
           video: '2026-06-06',
           form: '2026-06-05',
@@ -17,25 +20,12 @@ export default function CapturePage() {
           'event-log': '2026-06-02',
         }}
       />
+
+      {selected === 'video' && <div>/* your video upload + transcription mode */</div>}
+      {selected === 'form' && <div>/* your structured form */</div>}
+      {selected === 'documents' && <div>/* your document ingestion */</div>}
+      {selected === 'screen' && <div>/* your screen capture mode */</div>}
+      {selected === 'event-log' && <div>/* your event-log import */</div>}
     </main>
   );
 }
-
-/*
-  Need custom handling instead of routing? Wrap it in a client component:
-
-  // app/capture/CaptureClient.tsx
-  'use client';
-  import CaptureSources from '@/components/capture/CaptureSources';
-  import type { CaptureSourceId } from '@/lib/triangulation';
-
-  export default function CaptureClient() {
-    return (
-      <CaptureSources
-        onSelect={(id: CaptureSourceId) => {
-          // open the matching intake mode, set state, etc.
-        }}
-      />
-    );
-  }
-*/
