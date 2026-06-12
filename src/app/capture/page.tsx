@@ -21,11 +21,11 @@ export default function CapturePage() {
         }}
       />
 
-      {selected === 'video' && <div>/* your video upload + transcription mode */</div>}
-      {selected === 'form' && <div>/* your structured form */</div>}
-      {selected === 'documents' && <div>/* your document ingestion */</div>}
-      {selected === 'screen' && <div>/* your screen capture mode */</div>}
-      {selected === 'event-log' && <div>/* your event-log import */</div>}
+      {selected === 'video' && <div>{/* your video upload + transcription mode */}</div>}
+      {selected === 'form' && <div>{/* your structured form */}</div>}
+      {selected === 'documents' && <div>{/* your document ingestion */}</div>}
+      {selected === 'screen' && <div>{/* your screen capture mode */}</div>}
+      {selected === 'event-log' && <div>{/* your event-log import */}</div>}
     </main>
   );
 }
