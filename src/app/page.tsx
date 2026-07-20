@@ -7,6 +7,7 @@ import { StatusBadge } from "@/components/Badge";
 import { MOCK_PROCESSES, MOCK_FILTERS, MOCK_MILESTONES } from "@/lib/mock";
 import { formatDate } from "@/lib/format";
 
+
 const ALL = "All";
 
 export default function Dashboard() {
@@ -124,3 +125,17 @@ function Filter({
     </div>
   );
 }
+// any server component
+import { auth } from '@/auth';
+
+export default async function Page() {
+  const session = await auth();
+  const canArbitrate = session?.user.roles.includes('arbitrator');
+  // gate Capture / Arbitration actions on roles here
+}
+// sign in / out via server actions
+import { signIn, signOut } from '@/auth';
+
+<form action={async () => { 'use server'; await signIn('keycloak'); }}>
+  <button type="submit">Sign in</button>
+</form>
